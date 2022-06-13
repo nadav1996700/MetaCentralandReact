@@ -2,6 +2,7 @@ import React from "react";
 import "./MainScreen.css";
 import Legend from "./Legend";
 import Lands from "./Lands";
+import Footer from "./Footer";
 
 function Main() {
   return (
@@ -12,6 +13,7 @@ function Main() {
       </header>
       <Legend />
       <Lands />
+      <Footer />
     </div>
   );
 }
