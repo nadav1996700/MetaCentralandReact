@@ -6,7 +6,7 @@
 }
 
 body {
-	background: #f6f5f7;
+	background: #273485;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -55,6 +55,10 @@ button {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+}
+
+button:hover {
+	cursor: pointer;
 }
 
 button:active {
