@@ -17,6 +17,15 @@ header {
 
 .title {
     color: rgb(44, 113, 156);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.footer {
+    color: white;
+}
+
+.legend_title {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 button.logout {
@@ -62,6 +71,7 @@ ul {
     height: 120px;
     width: 120px;
     border: 1px solid grey;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .background_grey {
