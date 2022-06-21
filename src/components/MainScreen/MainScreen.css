@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     display: block;
-    background-color: antiquewhite;
+    background-image: url("../static/backgroundMETA.jpg");
 }
 
 header {
@@ -11,7 +11,12 @@ header {
     flex-direction: row;
     justify-content: center;
     height: auto;
-    background-color: rgb(146, 184, 217);
+    background-image: url("../static/header_background.jpg");
+    background-color: rgb(175, 198, 218);
+}
+
+.title {
+    color: rgb(44, 113, 156);
 }
 
 button.logout {
@@ -25,7 +30,7 @@ button.logout {
 
 button:hover {
     cursor: pointer;
-    background-color: rgb(156, 160, 160);
+    background-color: rgb(135, 215, 215);
     color: white;
 }
 
