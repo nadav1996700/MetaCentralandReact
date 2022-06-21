@@ -11,7 +11,7 @@ header {
     flex-direction: row;
     justify-content: center;
     height: auto;
-    background-color: aliceblue;
+    background-color: rgb(146, 184, 217);
 }
 
 button.logout {
@@ -45,9 +45,36 @@ ul {
 .lands-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .center {
     display: flex;
     justify-content: center;
+}
+
+.land-box {
+    height: 120px;
+    width: 120px;
+    border: 1px solid grey;
+}
+
+.background_grey {
+    background-color: rgb(166, 166, 172);
+}
+
+.background_red {
+    background-color: rgb(236, 21, 18);
+}
+
+.background_green {
+    background-color: rgb(91, 229, 57);
+}
+
+.background_light_blue {
+    background-color: rgb(120, 150, 213);
+}
+
+.background_dark_blue {
+    background-color: rgb(4, 57, 169);
 }

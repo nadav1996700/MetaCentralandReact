@@ -6,21 +6,19 @@ import Land from "./Land";
 function Lands() {
   const [lands, setLands] = useState([]);
 
-  {
-    /*
-useEffect(() => {
-    axios.get("").then((res) => {
-      const data = res.data;
-      setLands(data);
+  useEffect(() => {
+    axios.get("http://localhost:3001/land/getAllLands").then((res) => {
+      setLands(res.data);
     });
-  }, []); 
+  }, []);
 
-
-  const landsSquers = lands.map((landData) => <Land data={landData} />);
-  return <div className="lands-container"> {landsSquers} </div>;
-  */
-  }
-  return <div>Lands</div>;
+  return (
+    <div className="lands-container">
+      {lands.map((landData) => (
+        <Land data={landData} />
+      ))}
+    </div>
+  );
 }
 
 export default Lands;
