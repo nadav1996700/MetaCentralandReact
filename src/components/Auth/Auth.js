@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 const axios = require("axios");
 
 function Auth() {
+  let navigate = useNavigate();
   const [toggleClass, setToggleClass] = useState(false);
   const [loginFormData, setLoginFormData] = useState({
     login_email: "",
@@ -13,7 +15,7 @@ function Auth() {
     name: "",
     register_email: "",
     register_password: "",
-    type: "",
+    type: "User",
   });
 
   const container_class_handler = () => {
@@ -39,13 +41,63 @@ function Auth() {
     promise.then((response) => {
       if (response.data === "success") {
         console.log("login ok");
+        navigate("/main");
       } else if (response.data === "failure") {
         console.log("login failed");
       }
     });
   };
 
-  const handleRegister = (event) => {};
+  const handleRegister = (event) => {
+    console.log(
+      "Name: " +
+        registerFormData.name +
+        "\nEmail: " +
+        registerFormData.register_email +
+        "\nPassword: " +
+        registerFormData.register_password +
+        "\nType: " +
+        registerFormData.type
+    );
+    // Prevent page reload
+    event.preventDefault();
+
+    const promise = axios({
+      method: "post",
+      url: "http://localhost:3001/user/signup/",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      data: {
+        name: registerFormData.name,
+        email: registerFormData.register_email,
+        password: registerFormData.register_password,
+        type: registerFormData.type,
+        budget: registerFormData.type === "User" ? 1000 : 0,
+      },
+    });
+
+    try {
+      promise.then((response) => {
+        if (response.data === "success") {
+          console.log("register ok");
+          navigate("/");
+        } else if (response.data === "failure") {
+          console.log("register failed");
+        }
+      });
+    } catch (error) {
+      console.log("error: " + error.response);
+    }
+  };
+
+  // function for radio buttons that set the type of user
+  function onChangeValue(event) {
+    setRegisterFormData({
+      ...registerFormData,
+      type: event.target.value,
+    });
+  }
 
   return (
     <div>
@@ -66,6 +118,7 @@ function Auth() {
                   name: e.target.value,
                 })
               }
+              required
             />
             <input
               type="email"
@@ -76,6 +129,7 @@ function Auth() {
                   register_email: e.target.value,
                 })
               }
+              required
             />
             <input
               type="password"
@@ -86,7 +140,30 @@ function Auth() {
                   register_password: e.target.value,
                 })
               }
+              required
             />
+            <div className="radio-group" onChange={onChangeValue}>
+              <label>
+                <input
+                  type="radio"
+                  placeholder="user"
+                  name="typeOfUser"
+                  value="User"
+                  checked={registerFormData.type === "User"}
+                />
+                User
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  placeholder="guest"
+                  name="typeOfUser"
+                  value="Guest"
+                  checked={registerFormData.type === "Guest"}
+                />
+                Guest
+              </label>
+            </div>
             <button type="submit">Sign Up</button>
           </form>
         </div>

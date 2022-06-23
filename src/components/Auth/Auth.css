@@ -229,3 +229,14 @@ input {
 	height: 40px;
 	width: 40px;
 }
+
+.radio-group {
+	width: 280px;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	font-size: 15px;
+	font-weight: bold;
+}
