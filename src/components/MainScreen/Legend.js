@@ -1,9 +1,8 @@
 import React from "react";
-import "./MainScreen.css";
 
 function Legend() {
   return (
-    <ul>
+    <ul className="legend">
       <li>
         <div className="colored-box" style={{ backgroundColor: "#A6A6AC" }} />
         <h3 className="legend_title">Road</h3>

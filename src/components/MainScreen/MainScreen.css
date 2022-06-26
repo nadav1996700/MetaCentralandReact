@@ -8,9 +8,12 @@
 
 header {
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: center;
-    height: auto;
+    align-items: center;
+    height: 8vh;
+    width: 100%;
     background-image: url("../static/header_background.jpg");
     background-color: rgb(175, 198, 218);
 }
@@ -24,6 +27,10 @@ header {
     color: white;
 }
 
+.legend {
+    margin: 20px 0;
+}
+
 .legend_title {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -31,13 +38,17 @@ header {
 button.logout {
     position: absolute;
     right: 50px;
-    top: 25px;
-    height: 40px;
-    width: 80px;
+    top: 12px;
+    height: auto;
+    width: auto;
+    white-space: nowrap;
     background-color: transparent;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 13px;
 }
 
-button:hover {
+button.logout:hover {
     cursor: pointer;
     background-color: rgb(135, 215, 215);
     color: white;
@@ -65,6 +76,8 @@ ul {
 .center {
     display: flex;
     justify-content: center;
+    font-size: large;
+    background-color: blue;
 }
 
 .land-box {

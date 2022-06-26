@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Auth.css";
+import "./AuthDesign.css";
 const axios = require("axios");
 
 function Auth() {
@@ -49,16 +49,6 @@ function Auth() {
   };
 
   const handleRegister = (event) => {
-    console.log(
-      "Name: " +
-        registerFormData.name +
-        "\nEmail: " +
-        registerFormData.register_email +
-        "\nPassword: " +
-        registerFormData.register_password +
-        "\nType: " +
-        registerFormData.type
-    );
     // Prevent page reload
     event.preventDefault();
 
@@ -81,7 +71,7 @@ function Auth() {
       promise.then((response) => {
         if (response.data === "success") {
           console.log("register ok");
-          navigate("/");
+          container_class_handler();
         } else if (response.data === "failure") {
           console.log("register failed");
         }
@@ -100,7 +90,7 @@ function Auth() {
   }
 
   return (
-    <div>
+    <div className="authBody">
       <h2 style={{ color: "#ffff" }}>META CENTRALAND Game</h2>
       <div
         className={`container ${toggleClass ? "right-panel-active" : ""}`}
