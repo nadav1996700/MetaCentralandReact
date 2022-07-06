@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AuthDesign.css";
-const axios = require("axios");
+import axios from "axios";
 
 function Auth() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [toggleClass, setToggleClass] = useState(false);
   const [loginFormData, setLoginFormData] = useState({
     login_email: "",
@@ -39,10 +39,11 @@ function Auth() {
       },
     });
     promise.then((response) => {
-      if (response.data === "success") {
+      if (response.data) {
         console.log("login ok");
-        navigate("/main");
-      } else if (response.data === "failure") {
+        console.log("response.data in Auth: " + JSON.stringify(response.data));
+        navigate("/main", { state: { user: response.data } });
+      } else {
         console.log("login failed");
       }
     });
@@ -69,7 +70,7 @@ function Auth() {
 
     try {
       promise.then((response) => {
-        if (response.data === "success") {
+        if (response.status === 200) {
           console.log("register ok");
           container_class_handler();
         } else if (response.data === "failure") {
@@ -139,7 +140,7 @@ function Auth() {
                   placeholder="user"
                   name="typeOfUser"
                   value="User"
-                  checked={registerFormData.type === "User"}
+                  defaultChecked={registerFormData.type === "User"}
                 />
                 User
               </label>
@@ -149,12 +150,14 @@ function Auth() {
                   placeholder="guest"
                   name="typeOfUser"
                   value="Guest"
-                  checked={registerFormData.type === "Guest"}
+                  defaultChecked={registerFormData.type === "Guest"}
                 />
                 Guest
               </label>
             </div>
-            <button type="submit">Sign Up</button>
+            <button type="submit" id="signupSubmit">
+              Sign Up
+            </button>
           </form>
         </div>
         <div className="form-container sign-in-container">
@@ -180,7 +183,9 @@ function Auth() {
                 })
               }
             />
-            <button type="submit">Sign In</button>
+            <button type="submit" id="signInSubmit">
+              Sign In
+            </button>
           </form>
         </div>
         <div className="overlay-container">

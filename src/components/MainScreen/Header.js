@@ -1,15 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+// <br /> hello {name}!
 
-const LogOut = () => {
-  useNavigate("/");
-};
+function Header(props) {
+  const navigate = useNavigate();
+  const LogOut = () => {
+    navigate("/");
+  };
 
-function Header() {
+  console.log("name = " + props.name);
   return (
     <div>
       <header>
-        <h1 className="title"> META CENTRALAND GAME </h1>
+        <h1 className="title">META CENTRALAND GAME {props.name}</h1>
         <button className="logout" onClick={LogOut}>
           Log Out
         </button>

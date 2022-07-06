@@ -43,6 +43,7 @@ button.logout {
     width: auto;
     white-space: nowrap;
     background-color: transparent;
+    border-radius: 60px;
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 13px;
@@ -81,8 +82,8 @@ ul {
 }
 
 .land-box {
-    height: 120px;
-    width: 120px;
+    height: 30px;
+    width: 30px;
     border: 1px solid grey;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

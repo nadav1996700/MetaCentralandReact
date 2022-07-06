@@ -19,7 +19,8 @@ function Land(props) {
 
   return (
     <div className={classes}>
-      {data.id && data.can_be_sale ? data.price + "$" : ""}
+      {data.id}
+      {/*{data.id && data.can_be_sale ? data.price + "$" : ""}*/}
     </div>
   );
 }
