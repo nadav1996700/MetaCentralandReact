@@ -5,7 +5,7 @@ import Lands from "./Lands";
 import Header from "./Header";
 import { useLocation } from "react-router-dom";
 
-const Main = (props) => {
+const Main = () => {
   const location = useLocation();
   // eslint-disable-next-line
   const [user, setUser] = useState(location.state.user);

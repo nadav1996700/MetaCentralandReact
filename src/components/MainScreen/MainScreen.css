@@ -23,6 +23,12 @@ header {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.hello_user {
+    color: rgb(56, 93, 95);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.7rem;
+}
+
 .footer {
     color: white;
 }
@@ -82,6 +88,7 @@ ul {
 }
 
 .land-box {
+    cursor: pointer;
     height: 30px;
     width: 30px;
     border: 1px solid grey;
@@ -106,4 +113,11 @@ ul {
 
 .background_dark_blue {
     background-color: rgb(4, 57, 169);
+}
+
+.landDataPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
 }
