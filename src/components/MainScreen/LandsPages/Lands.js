@@ -2,10 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Land from "./Land";
-import { useNavigate } from "react-router-dom";
 
 function Lands(props) {
-  const navigate = useNavigate();
   const [lands, setLands] = useState([]);
 
   useEffect(() => {
@@ -17,16 +15,7 @@ function Lands(props) {
   return (
     <div className="lands-container">
       {lands.map((landData, i) => (
-        <Land
-          key={i}
-          data={landData}
-          user={props.user}
-          onClick={() =>
-            navigate("/main", {
-              landId: landData.id,
-            })
-          }
-        />
+        <Land key={i} land={landData} user={props.user} />
       ))}
     </div>
   );

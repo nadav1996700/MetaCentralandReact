@@ -30,7 +30,7 @@ header {
 }
 
 .footer {
-    color: white;
+    color: rgba(23, 6, 255, 0.799);
 }
 
 .legend {
@@ -84,7 +84,7 @@ ul {
     display: flex;
     justify-content: center;
     font-size: large;
-    background-color: blue;
+    background-color: rgb(206, 206, 206);
 }
 
 .land-box {
@@ -116,8 +116,100 @@ ul {
 }
 
 .landDataPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    position: relative;
     background-color: blueviolet;
+    height: 90.7vh;
+    width: 100%;
+}
+
+.landDataTitle {
+    position: absolute;
+    left: 38%;
+    color: black;
+    font-size: 50px;
+}
+
+.back_button_landdata {
+    position: absolute;
+    left: 5%;
+    background-color: rgb(227, 83, 47);
+    border-radius: 9px;
+    border: 1px solid black;
+    height: 50px;
+    width: 30px;
+}
+
+.landDataHeader {
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(233, 201, 231);
+    position: relative;
+}
+
+.ownerDetailsSection {
+    display: block;
+    position: absolute;
+    left: 18%;
+    margin-top: 20px; 
+}
+
+.userDetailsSection {
+    display: block;
+    position: absolute;
+    right: 10%;
+    margin-top: 20px; 
+}
+
+.ownerOptionsSection {
+    position: absolute;
+    right: 7%;
+    top: 30%;
+    height: 230px;
+    width: 400px;
+    background-color: orange;
+}
+
+.textStyle {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.game {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    margin: 0px 20px;
+}
+
+iframe {
+    height: 400px;
+    width: 400px;
+}
+
+.btnData {
+    margin: 20px;
+}
+
+.inputWithDollarSign {
+    white-space: nowrap;
+}
+
+.buyerSection {
+    position: absolute;
+    right: 7%;
+    top: 30%;
+    height: 230px;
+    width: 400px;
+    background-color: orange;
+}
+
+.successMessage {
+    font-size: 1.4rem;
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 70px;
+    margin-top: 50px;
 }

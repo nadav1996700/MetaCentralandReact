@@ -41,7 +41,6 @@ function Auth() {
     promise.then((response) => {
       if (response.data) {
         console.log("login ok");
-        console.log("response.data in Auth: " + JSON.stringify(response.data));
         navigate("/main", { state: { user: response.data } });
       } else {
         console.log("login failed");
