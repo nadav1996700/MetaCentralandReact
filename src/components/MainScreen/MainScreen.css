@@ -120,7 +120,7 @@ ul {
     display: block;
     position: relative;
     background-color: blueviolet;
-    height: 90.7vh;
+    height: 140vh;
     width: 100%;
 }
 
@@ -135,16 +135,21 @@ ul {
     position: absolute;
     left: 5%;
     background-color: rgb(227, 83, 47);
-    border-radius: 9px;
+    border-radius: 20px;
     border: 1px solid black;
     height: 50px;
     width: 30px;
+    padding-right: 5%;
+}
+
+.back_button_landdata:hover {
+    background-color: orange;
 }
 
 .landDataHeader {
     display: flex;
     align-items: center;
-    height: 10vh;
+    height: 10%;
     width: 100%;
     background-color: rgb(233, 201, 231);
     position: relative;
@@ -166,10 +171,10 @@ ul {
 
 .ownerOptionsSection {
     position: absolute;
-    right: 7%;
+    right: 2%;
     top: 30%;
-    height: 280px;
-    width: 400px;
+    height: 380px;
+    width: 500px;
     background-color: orange;
 }
 
@@ -185,13 +190,15 @@ ul {
 .game {
     position: absolute;
     top: 30%;
-    left: 15%;
-    margin: 0px 20px;
+    left: 1%;
+    margin: 0px ;
+    width: 900px;
+    height: 700px;
 }
 
 iframe {
-    height: 400px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
 }
 
 .btnData {

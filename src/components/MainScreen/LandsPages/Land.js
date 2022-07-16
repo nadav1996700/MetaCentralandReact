@@ -10,6 +10,7 @@ function Land(props) {
     });
   };
   const Landdata = props.land;
+  const isParkOrRoad = Landdata.isPark || Landdata.isRoad;
   const [classes, setClasses] = useState("background_dark_blue");
   useEffect(() => {
     if (props.user.email === Landdata.ownerEmail) {
@@ -26,7 +27,7 @@ function Land(props) {
   }, []);
 
   return (
-    <div className={classes} onClick={getIntoLand}>
+    <div className={classes} onClick={!isParkOrRoad && getIntoLand}>
       {Landdata.id}
     </div>
   );

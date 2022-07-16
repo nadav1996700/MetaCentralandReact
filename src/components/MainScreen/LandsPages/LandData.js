@@ -27,12 +27,17 @@ function LandData() {
     }
   }, [land]);
 
-  function backToMain() {
+  const backToMain = () => {
     const navigate = useNavigate();
     navigate("/main", { state: { user: user } });
-  }
+  };
 
+  // make transfer of land between two buyers (of type "User")
   function buyLand() {
+    if (user.budget < land.price) {
+      setResultMessage("you dont have enough money!");
+      return;
+    }
     const promise = axios({
       method: "put",
       url: "http://localhost:3001/land/transferOwnership",
@@ -62,6 +67,7 @@ function LandData() {
     });
   }
 
+  // change the status of land from "For Sale" to "Not for sale" and vice versa
   function changeStatus() {
     const promise = axios({
       method: "put",
@@ -76,7 +82,6 @@ function LandData() {
     });
 
     promise.then((response) => {
-      console.log("response: " + JSON.stringify(response));
       if (response.status === 200) {
         setLand({ ...land, can_be_sale: !land.can_be_sale });
       } else {
@@ -85,8 +90,14 @@ function LandData() {
     });
   }
 
+  // change the price of a land
   function changePrice() {
     const newPrice = document.getElementById("inputPrice").value;
+    if (newPrice < 0 || !newPrice) {
+      setResultMessage("price must be greater that zero!");
+      return;
+    }
+    setResultMessage("");
     const promise = axios({
       method: "put",
       url: "http://localhost:3001/land/setPrice",
@@ -108,6 +119,33 @@ function LandData() {
     });
   }
 
+  // set new game address to a land
+  function changeGame() {
+    const gameAddress = document.getElementById("gameAddress").value;
+    if (!gameAddress) {
+      return;
+    }
+    const promise = axios({
+      method: "put",
+      url: "http://localhost:3001/land/setGame",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      data: {
+        id: land.id,
+        gameAddress: gameAddress,
+      },
+    });
+
+    promise.then((response) => {
+      if (response.status === 200) {
+        setLand({ ...land, game: gameAddress });
+      } else {
+        setResultMessage("Unable to complete operation");
+      }
+    });
+  }
+
   return (
     <div className="landDataPage">
       <div className="landDataHeader">
@@ -122,11 +160,7 @@ function LandData() {
         </p>
       </div>
       <div className="game">
-        <iframe
-          src="https://www.youtube.com/embed?v=06-XXOTP3Gc&list=RD06-XXOTP3Gc&start_radio=1"
-          title="W3Schools Free Online Web Tutorials"
-          allowFullScreen
-        ></iframe>
+        {land.game && <iframe src={land.game} title="Game"></iframe>}
       </div>
       {showUserTypeComponent && (
         <div className="userDetailsSection">
@@ -153,14 +187,35 @@ function LandData() {
             </button>
             <input
               id="inputPrice"
+              placeholder="price"
               style={{
                 width: "100px",
                 borderRadius: "9px",
                 display: "inline-block",
+                marginLeft: "35px",
               }}
               type="number"
             />
             <h2 style={{ display: "inline-block", marginLeft: "10px" }}>$</h2>
+          </div>
+          <div className="inputWithDollarSign">
+            <button
+              className="btnData"
+              style={{ display: "inline-block" }}
+              onClick={changeGame}
+            >
+              Set game address
+            </button>
+            <input
+              id="gameAddress"
+              placeholder="enter game address"
+              style={{
+                width: "200px",
+                borderRadius: "9px",
+                display: "inline-block",
+              }}
+              type="text"
+            />
             <p className="successMessage">{resultMessage}</p>
           </div>
         </div>
