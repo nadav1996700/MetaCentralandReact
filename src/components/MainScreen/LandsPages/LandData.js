@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function LandData() {
+  const navigate = useNavigate();
   const location = useLocation();
   // eslint-disable-next-line
   const [user, setUser] = useState(location.state.user);
@@ -28,8 +29,7 @@ function LandData() {
   }, [land]);
 
   const backToMain = () => {
-    const navigate = useNavigate();
-    navigate("/main", { state: { user: user } });
+    navigate(-1, { state: { user: user } });
   };
 
   // make transfer of land between two buyers (of type "User")
