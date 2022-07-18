@@ -7,6 +7,8 @@ import axios from "axios";
 function Auth() {
   const navigate = useNavigate();
   const [toggleClass, setToggleClass] = useState(false);
+  const [loginErrorMessage, setLoginErrorMessage] = useState("");
+  const [registerErrorMessage, setRegisterErrorMessage] = useState("");
   const [loginFormData, setLoginFormData] = useState({
     login_email: "",
     login_password: "",
@@ -38,14 +40,18 @@ function Auth() {
         password: loginFormData.login_password,
       },
     });
-    promise.then((response) => {
-      if (response.data) {
-        console.log("login ok");
-        navigate("/main", { state: { user: response.data } });
-      } else {
-        console.log("login failed");
-      }
-    });
+    promise
+      .then((response) => {
+        console.log("got here");
+        if (response.status === 200) {
+          console.log("login ok");
+          navigate("/main", { state: { user: response.data } });
+        }
+      })
+      .catch((err) => {
+        console.log("login error: " + err);
+        setLoginErrorMessage("login failed");
+      });
   };
 
   const handleRegister = (event) => {
@@ -67,18 +73,17 @@ function Auth() {
       },
     });
 
-    try {
-      promise.then((response) => {
+    promise
+      .then((response) => {
         if (response.status === 200) {
           console.log("register ok");
           container_class_handler();
-        } else if (response.data === "failure") {
-          console.log("register failed");
         }
+      })
+      .catch((err) => {
+        console.log("error: " + err);
+        setRegisterErrorMessage("user with this email already exist");
       });
-    } catch (error) {
-      console.log("error: " + error.response);
-    }
   };
 
   // function for radio buttons that set the type of user
@@ -157,6 +162,7 @@ function Auth() {
             <button type="submit" id="signupSubmit">
               Sign Up
             </button>
+            <p className="error"> {registerErrorMessage}</p>
           </form>
         </div>
         <div className="form-container sign-in-container">
@@ -185,6 +191,7 @@ function Auth() {
             <button type="submit" id="signInSubmit">
               Sign In
             </button>
+            <p className="error"> {loginErrorMessage}</p>
           </form>
         </div>
         <div className="overlay-container">

@@ -16,9 +16,9 @@ function Land(props) {
     if (props.user.email === Landdata.ownerEmail) {
       setClasses("land-box background_red");
     } else if (Landdata.isRoad) {
-      setClasses("land-box background_grey");
+      setClasses("land-box background_grey unClickable");
     } else if (Landdata.isPark) {
-      setClasses("land-box background_green");
+      setClasses("land-box background_green unClickable");
     } else if (!Landdata.can_be_sale) {
       setClasses("land-box background_dark_blue");
     } else if (Landdata.can_be_sale) {
@@ -27,9 +27,10 @@ function Land(props) {
   }, []);
 
   return (
-    <div className={classes} onClick={!isParkOrRoad && getIntoLand}>
-      {Landdata.id}
-    </div>
+    <div
+      className={classes}
+      onClick={!isParkOrRoad ? getIntoLand : undefined}
+    ></div>
   );
 }
 
